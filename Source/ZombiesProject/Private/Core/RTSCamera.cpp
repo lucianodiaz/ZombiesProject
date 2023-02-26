@@ -98,6 +98,6 @@ void ARTSCamera::ZoomingCamera(const float AxisValue)
 {
 	ZoomFactor = UKismetMathLibrary::Clamp(AxisValue * -1.0f + ZoomFactor,0,10);
 
-	SpringArmComp->TargetArmLength = UKismetMathLibrary::Clamp(ZoomFactor * 200 + 1000,600,1700);
+	SpringArmComp->TargetArmLength = UKismetMathLibrary::Clamp(ZoomFactor * 100 + 400,400,1200);
 }
 
