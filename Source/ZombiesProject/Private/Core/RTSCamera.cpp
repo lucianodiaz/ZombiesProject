@@ -31,7 +31,7 @@ ARTSCamera::ARTSCamera()
 // Called when the game starts or when spawned
 void ARTSCamera::BeginPlay()
 {
-	Super::BeginPlay();
+	Super::BeginPlay(); 
 	PC = UGameplayStatics::GetPlayerController(GetWorld(),0);
 
 	PC->SetViewTargetWithBlend(this);
@@ -48,7 +48,7 @@ void ARTSCamera::Tick(float DeltaTime)
 
 float ARTSCamera::GetCameraSpeed(const float ScaleFactor) const
 {
-	return ((UKismetMathLibrary::NormalizeToRange(SpringArmComp->TargetArmLength,1000,2000) * VelocityMultiplier)+40) * ScaleFactor;
+	return ((UKismetMathLibrary::NormalizeToRange(SpringArmComp->TargetArmLength,MinTargetArmLength/2,MaxTargetArmLength/2) * VelocityMultiplier)) * ScaleFactor;
 }
 
 void ARTSCamera::MoveUpCamera() const
@@ -98,6 +98,6 @@ void ARTSCamera::ZoomingCamera(const float AxisValue)
 {
 	ZoomFactor = UKismetMathLibrary::Clamp(AxisValue * -1.0f + ZoomFactor,0,10);
 
-	SpringArmComp->TargetArmLength = UKismetMathLibrary::Clamp(ZoomFactor * 100 + 400,400,1200);
+	SpringArmComp->TargetArmLength = UKismetMathLibrary::Clamp(ZoomFactor * 100 + MinTargetArmLength,MinTargetArmLength,MaxTargetArmLength);
 }
 

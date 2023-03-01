@@ -13,5 +13,14 @@ UCLASS()
 class ZOMBIESPROJECT_API ARTSCityBuilderGM : public AGameModeBase
 {
 	GENERATED_BODY()
+
+public:
+
+	UPROPERTY(BlueprintReadWrite,EditAnywhere)
+	int Food;
+
+	UPROPERTY(BlueprintReadWrite,EditAnywhere)
+	int MaterialConstruction;
+
 	
 };

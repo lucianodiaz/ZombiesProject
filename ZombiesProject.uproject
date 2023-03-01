@@ -12,5 +12,11 @@
 				"Engine"
 			]
 		}
+	],
+	"Plugins": [
+		{
+			"Name": "GoogleDoc2DataTable",
+			"Enabled": false
+		}
 	]
 }

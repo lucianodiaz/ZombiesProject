@@ -72,3 +72,7 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+.idea/.idea.ZombiesProject/.idea/workspace.xml
+.idea/.idea.ZombiesProject/.idea/vcs.xml
+.idea/.idea.ZombiesProject/.idea/projectSettingsUpdater.xml
+.idea/.idea.ZombiesProject/.idea/indexLayout.xml

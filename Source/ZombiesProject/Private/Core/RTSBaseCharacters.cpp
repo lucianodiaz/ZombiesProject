@@ -4,6 +4,7 @@
 #include "Core/RTSBaseCharacters.h"
 
 #include "Blueprint/AIBlueprintHelperLibrary.h"
+#include "Components/DecalComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
 
 // Sets default values
@@ -12,6 +13,9 @@ ARTSBaseCharacters::ARTSBaseCharacters()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	DecalSelectionComponent = CreateDefaultSubobject<UDecalComponent>(TEXT("DecalSelectionComponent"));
+	DecalSelectionComponent->SetupAttachment(GetMesh());
+	DecalSelectionComponent->ToggleVisibility(false);
 }
 
 // Called when the game starts or when spawned
@@ -51,12 +55,14 @@ void ARTSBaseCharacters::OnAction_Implementation()
 void ARTSBaseCharacters::OnSelect_Implementation()
 {
 	IRTSInteractable::OnSelect_Implementation();
+	DecalSelectionComponent->ToggleVisibility(true);
 	UKismetSystemLibrary::PrintString(GetWorld(),"OnSelect");
 }
 
 void ARTSBaseCharacters::OnDeselect_Implementation()
 {
 	IRTSInteractable::OnDeselect_Implementation();
+	DecalSelectionComponent->ToggleVisibility(true);
 	UKismetSystemLibrary::PrintString(GetWorld(),"OnDeselect");
 }
 

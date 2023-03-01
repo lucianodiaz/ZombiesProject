@@ -43,11 +43,11 @@ protected:
 	APlayerController* PC;
 	
 	UPROPERTY()
-	float CamSpeed = 4;
-
-	UPROPERTY()
 	float ZoomFactor = 5;
-	
+
+
+	float MinTargetArmLength = 400;
+	float MaxTargetArmLength = 1200;
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

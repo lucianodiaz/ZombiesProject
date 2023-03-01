@@ -20,7 +20,17 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
+
+	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly)
+	USceneComponent* RootScene;
+
+	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly)
+	UStaticMeshComponent* StaticMeshComponent;
+
+	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly)
+	UDecalComponent* DecalSelectionComponent;
+	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
