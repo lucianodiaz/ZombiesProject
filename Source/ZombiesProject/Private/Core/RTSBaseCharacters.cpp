@@ -16,6 +16,10 @@ ARTSBaseCharacters::ARTSBaseCharacters()
 	DecalSelectionComponent = CreateDefaultSubobject<UDecalComponent>(TEXT("DecalSelectionComponent"));
 	DecalSelectionComponent->SetupAttachment(GetMesh());
 	DecalSelectionComponent->ToggleVisibility(false);
+
+	HealthComponent = CreateDefaultSubobject<URTSHealthComponent>(TEXT("HealthComponent"));
+
+	HealthComponent->OnHealthChanged.AddDynamic(this,&ARTSBaseCharacters::OnHealthChanged);
 }
 
 // Called when the game starts or when spawned
@@ -64,5 +68,15 @@ void ARTSBaseCharacters::OnDeselect_Implementation()
 	IRTSInteractable::OnDeselect_Implementation();
 	DecalSelectionComponent->ToggleVisibility(true);
 	UKismetSystemLibrary::PrintString(GetWorld(),"OnDeselect");
+}
+
+void ARTSBaseCharacters::OnHealthChanged(float Health, float HealthDelta, const UDamageType* DamageType,
+	AController* InstigatedBy, AActor* DamageCauser)
+{
+
+	if(Health <= 0.0f)
+	{
+		//do something of dead's
+	}
 }
 

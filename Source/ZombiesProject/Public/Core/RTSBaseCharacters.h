@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components/RTSHealthComponent.h"
 #include "GameFramework/Character.h"
 #include "Interfaces/RTSInteractable.h"
 #include "RTSBaseCharacters.generated.h"
@@ -22,15 +23,17 @@ protected:
 
 public:
 	
-	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly)
+	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Component")
 	UDecalComponent* DecalSelectionComponent;
-	
+
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Component")
+	URTSHealthComponent* HealthComponent;
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
+	
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable,Category="Interaction")
 	void OnAction();
 	virtual void OnAction_Implementation();
@@ -42,4 +45,11 @@ public:
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable,Category="Interaction")
 	void OnDeselect();
 	virtual void OnDeselect_Implementation();
+
+protected:
+	
+	UFUNCTION()
+	void OnHealthChanged(float Health, float HealthDelta, const class UDamageType* DamageType,
+						 class AController* InstigatedBy, AActor* DamageCauser);
+
 };
