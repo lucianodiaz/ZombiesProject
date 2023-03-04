@@ -53,6 +53,7 @@ void ARTSBaseCharacters::OnAction_Implementation()
 	// 	if(UAIBlueprintHelperLibrary::GetBlackboard(this));
 	// 	
 	// }
+	
 	UKismetSystemLibrary::PrintString(GetWorld(),"OnAction");
 }
 
