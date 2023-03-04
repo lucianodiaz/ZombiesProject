@@ -60,6 +60,7 @@ void ARTSBaseCharacters::OnAction_Implementation()
 void ARTSBaseCharacters::OnSelect_Implementation()
 {
 	IRTSInteractable::OnSelect_Implementation();
+	
 	DecalSelectionComponent->ToggleVisibility(true);
 	UKismetSystemLibrary::PrintString(GetWorld(),"OnSelect");
 }
@@ -67,7 +68,7 @@ void ARTSBaseCharacters::OnSelect_Implementation()
 void ARTSBaseCharacters::OnDeselect_Implementation()
 {
 	IRTSInteractable::OnDeselect_Implementation();
-	DecalSelectionComponent->ToggleVisibility(true);
+	DecalSelectionComponent->ToggleVisibility(false);
 	UKismetSystemLibrary::PrintString(GetWorld(),"OnDeselect");
 }
 

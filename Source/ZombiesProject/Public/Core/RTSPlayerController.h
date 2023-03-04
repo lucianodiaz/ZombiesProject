@@ -22,13 +22,16 @@ protected:
 
 	void Wheel(float AxisValue)const;
 
+	UFUNCTION(BlueprintCallable,BlueprintNativeEvent)
+	void UISelection(AActor* Actor);
+	virtual void UISelection_Implementation(AActor* Actor);
 	void Selection();
 
 	void Action();
 	
 	void ClearSelection();
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	AActor* ActorSelected;
 
 	UPROPERTY(BlueprintReadOnly)

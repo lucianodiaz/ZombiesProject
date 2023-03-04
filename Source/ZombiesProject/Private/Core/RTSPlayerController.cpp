@@ -13,7 +13,44 @@ ARTSPlayerController::ARTSPlayerController()
 	bShowMouseCursor = true;
 	bEnableTouchEvents = true;
 }
+void ARTSPlayerController::UISelection_Implementation(AActor* Actor)
+{
+	if(ActorSelected != Actor)
+	{
+		AActor* LastActorSelected = ActorSelected;
+			
+		ActorSelected = Actor;
 
+			
+		const IRTSInteractable* LastInterface = Cast<IRTSInteractable>(LastActorSelected);
+		if(LastInterface)
+		{
+			LastInterface->Execute_OnDeselect(LastActorSelected);
+			LastActorSelected = nullptr;
+		}
+		else
+		{
+			LastActorSelected = nullptr;
+		}
+			
+		const IRTSInteractable* Interface = Cast<IRTSInteractable>(ActorSelected);
+		if(Interface)
+		{
+			Interface->Execute_OnSelect(ActorSelected);
+			UE_LOG(LogTemp,Display,TEXT("The Actor's name is %s"),*ActorSelected->GetName());
+			UKismetSystemLibrary::PrintString(GetWorld(),ActorSelected->GetName());
+		}
+		else
+		{
+			ClearSelection();
+		}
+			
+	}
+	else
+	{
+		ClearSelection();
+	}
+}
 void ARTSPlayerController::Selection()
 {
 	FHitResult HitResult;
