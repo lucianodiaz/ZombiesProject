@@ -27,10 +27,10 @@ class ZOMBIESPROJECT_API IRTSGMInterface
 public:
 	
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable,Category="GameMode")
-	void AddResources(EResourceType ResourceType, int Amount);
+	void AddResources(const EResourceType ResourceType, const int Amount) const;
 
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable,Category="GameMode")
-	void GetResources(TArray<FResourceInfo>&Resources);
+	void GetResources(TArray<FResourceInfo>&Resources) ;
 
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable,Category="GameMode")
 	void GetCharacterInfo(FCharacterInfo& CharacterInfo);

@@ -16,6 +16,12 @@ class ZOMBIESPROJECT_API ARTSCityBuilderGM : public AGameModeBase, public IRTSGM
 {
 	GENERATED_BODY()
 
+
+protected:
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
+	void ClearFogReveal(UTextureRenderTarget2D* FogRevealTexture);
+	
+	void ClearFogReveal_Implementation(UTextureRenderTarget2D* FogRevealTexture);
 public:
 
 	UPROPERTY(BlueprintReadWrite,EditAnywhere)
@@ -31,9 +37,9 @@ public:
 	TArray<FCharacterInfo> AvatarInfoArray;
 	
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable,Category="GameMode")
-	void AddResources(EResourceType ResourceType, int Amount);
+	void AddResources(const EResourceType ResourceType,const int Amount);
 	
-	virtual void AddResources_Implementation(EResourceType ResourceType, int Amount);
+	virtual void AddResources_Implementation(const EResourceType ResourceType,const int Amount);
 
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable,Category="GameMode")
 	void GetResources(TArray<FResourceInfo>&Resources);
@@ -43,5 +49,5 @@ public:
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable,Category="GameMode")
 	void GetCharacterInfo(FCharacterInfo& CharacterInfo);
 
-	virtual void GetCharacterInfo_Implementation(FCharacterInfo& CharacterInfo);
+	virtual void GetCharacterInfo_Implementation(FCharacterInfo& CharacterInfo) ;
 };

@@ -3,8 +3,16 @@
 
 #include "Core/RTSCityBuilderGM.h"
 
+#include "Kismet/KismetRenderingLibrary.h"
 
-void ARTSCityBuilderGM::AddResources_Implementation(EResourceType ResourceType, int Amount)
+
+void ARTSCityBuilderGM::ClearFogReveal_Implementation(UTextureRenderTarget2D* FogRevealTexture)
+{
+	
+	UKismetRenderingLibrary::ClearRenderTarget2D(GetWorld(),FogRevealTexture);
+}
+
+void ARTSCityBuilderGM::AddResources_Implementation(const EResourceType ResourceType,const int Amount)
 {
 	IRTSGMInterface::AddResources_Implementation(ResourceType, Amount);
 

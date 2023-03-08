@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components/RTSFogRevealComponent.h"
 #include "Components/RTSHealthComponent.h"
 #include "GameFramework/Character.h"
 #include "Interfaces/RTSInteractable.h"
@@ -28,6 +29,10 @@ public:
 
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Component")
 	URTSHealthComponent* HealthComponent;
+
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Component")
+	URTSFogRevealComponent* FogRevealComponent;
+	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -51,5 +56,4 @@ protected:
 	UFUNCTION()
 	void OnHealthChanged(float Health, float HealthDelta, const class UDamageType* DamageType,
 						 class AController* InstigatedBy, AActor* DamageCauser);
-
 };

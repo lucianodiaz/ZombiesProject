@@ -3,8 +3,8 @@
 
 #include "Core/RTSBaseCharacters.h"
 
-#include "Blueprint/AIBlueprintHelperLibrary.h"
 #include "Components/DecalComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 
 // Sets default values
@@ -20,20 +20,21 @@ ARTSBaseCharacters::ARTSBaseCharacters()
 	HealthComponent = CreateDefaultSubobject<URTSHealthComponent>(TEXT("HealthComponent"));
 
 	HealthComponent->OnHealthChanged.AddDynamic(this,&ARTSBaseCharacters::OnHealthChanged);
+
+	FogRevealComponent = CreateDefaultSubobject<URTSFogRevealComponent>(TEXT("FogRevealComponent"));
+	
 }
 
 // Called when the game starts or when spawned
 void ARTSBaseCharacters::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
 void ARTSBaseCharacters::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 // Called to bind functionality to input
