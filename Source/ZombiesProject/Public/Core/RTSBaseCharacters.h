@@ -7,10 +7,11 @@
 #include "Components/RTSHealthComponent.h"
 #include "GameFramework/Character.h"
 #include "Interfaces/RTSInteractable.h"
+#include "Interfaces/RTSPawnInterfaces.h"
 #include "RTSBaseCharacters.generated.h"
 
-UCLASS()
-class ZOMBIESPROJECT_API ARTSBaseCharacters : public ACharacter, public IRTSInteractable
+UCLASS(Blueprintable)
+class ZOMBIESPROJECT_API ARTSBaseCharacters : public ACharacter, public IRTSInteractable, public IRTSPawnInterfaces
 {
 	GENERATED_BODY()
 
@@ -51,9 +52,14 @@ public:
 	void OnDeselect();
 	virtual void OnDeselect_Implementation();
 
+	virtual bool IsUserController_Implementation() override;
+	
+	UPROPERTY(BlueprintReadWrite,EditAnywhere)
+	bool bIsUserController;
 protected:
 	
 	UFUNCTION()
 	void OnHealthChanged(float Health, float HealthDelta, const class UDamageType* DamageType,
 						 class AController* InstigatedBy, AActor* DamageCauser);
+	
 };

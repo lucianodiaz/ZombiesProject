@@ -6,7 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "RTSFogRevealComponent.generated.h"
 
-
+class USphereComponent;
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class ZOMBIESPROJECT_API URTSFogRevealComponent : public UActorComponent
 {
@@ -25,6 +25,20 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 protected:
+
+	UPROPERTY(BlueprintReadWrite,EditDefaultsOnly)
+	USphereComponent* SphereComponent;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	float Radius;
+	
+	UFUNCTION()
+	void OverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult);
+
+	UFUNCTION()
+	void OverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
+
 	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly)
 	UMaterialInterface* FogMaterialInterface;
 	
@@ -42,6 +56,7 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite)
 	UTextureRenderTarget2D* FogRevealTextureRender;
+	
 
 	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly)
 	float SizeReveal;

@@ -56,3 +56,9 @@ void ARTSBaseObjInteractible::OnDeselect_Implementation()
 	UKismetSystemLibrary::PrintString(GetWorld(),"OnDeselect");
 }
 
+bool ARTSBaseObjInteractible::IsUserController_Implementation()
+{
+	return bIsUserController;
+	
+}
+

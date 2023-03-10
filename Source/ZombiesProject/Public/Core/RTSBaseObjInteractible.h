@@ -5,10 +5,11 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Interfaces/RTSInteractable.h"
+#include "Interfaces/RTSPawnInterfaces.h"
 #include "RTSBaseObjInteractible.generated.h"
 
 UCLASS()
-class ZOMBIESPROJECT_API ARTSBaseObjInteractible : public AActor, public IRTSInteractable
+class ZOMBIESPROJECT_API ARTSBaseObjInteractible : public AActor, public IRTSInteractable, public IRTSPawnInterfaces
 {
 	GENERATED_BODY()
 	
@@ -45,4 +46,10 @@ public:
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable,Category="Interaction")
 	void OnDeselect();
 	virtual void OnDeselect_Implementation();
+
+	
+	virtual bool IsUserController_Implementation() override;
+	
+	UPROPERTY(BlueprintReadWrite,EditAnywhere)
+	bool bIsUserController;
 };

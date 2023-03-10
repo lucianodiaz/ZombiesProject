@@ -4,6 +4,8 @@
 #include "Core/RTSBaseCharacters.h"
 
 #include "Components/DecalComponent.h"
+#include "Core/RTSPlayerController.h"
+#include "GameFramework/GameSession.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 
@@ -22,7 +24,7 @@ ARTSBaseCharacters::ARTSBaseCharacters()
 	HealthComponent->OnHealthChanged.AddDynamic(this,&ARTSBaseCharacters::OnHealthChanged);
 
 	FogRevealComponent = CreateDefaultSubobject<URTSFogRevealComponent>(TEXT("FogRevealComponent"));
-	
+	bIsUserController = false;
 }
 
 // Called when the game starts or when spawned
@@ -72,9 +74,14 @@ void ARTSBaseCharacters::OnDeselect_Implementation()
 	DecalSelectionComponent->ToggleVisibility(false);
 	UKismetSystemLibrary::PrintString(GetWorld(),"OnDeselect");
 }
+bool ARTSBaseCharacters::IsUserController_Implementation()
+{
+	return bIsUserController;
+}
+
 
 void ARTSBaseCharacters::OnHealthChanged(float Health, float HealthDelta, const UDamageType* DamageType,
-	AController* InstigatedBy, AActor* DamageCauser)
+                                         AController* InstigatedBy, AActor* DamageCauser)
 {
 
 	if(Health <= 0.0f)
@@ -82,4 +89,3 @@ void ARTSBaseCharacters::OnHealthChanged(float Health, float HealthDelta, const 
 		//do something of dead's
 	}
 }
-
