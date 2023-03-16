@@ -52,4 +52,11 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite,EditAnywhere)
 	bool bIsUserController;
+	
+	void SetNumberOfObservers_Implementation(int Watcher) override;
+
+	int GetNumberOfObservers_Implementation() override;
+
+private:
+	int NumberOfObservers;
 };

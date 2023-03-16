@@ -114,6 +114,7 @@ void URTSFogRevealComponent::OverlapBegin(UPrimitiveComponent* OverlappedCompone
 	{
 		if(!IRTSPawnInterfaces::Execute_IsUserController(OtherActor))
 		{
+			IRTSPawnInterfaces::Execute_SetNumberOfObservers(OtherActor,IRTSPawnInterfaces::Execute_GetNumberOfObservers(OtherActor)+1);
 			OtherActor->SetActorHiddenInGame(false);
 		}
 	}
@@ -128,7 +129,12 @@ void URTSFogRevealComponent::OverlapEnd(UPrimitiveComponent* OverlappedComponent
 	{
 		if(!IRTSPawnInterfaces::Execute_IsUserController(OtherActor))
 		{
-			OtherActor->SetActorHiddenInGame(true);
+			IRTSPawnInterfaces::Execute_SetNumberOfObservers(OtherActor,IRTSPawnInterfaces::Execute_GetNumberOfObservers(OtherActor)-1);
+			if(IRTSPawnInterfaces::Execute_GetNumberOfObservers(OtherActor) <= 0)
+			{
+					OtherActor->SetActorHiddenInGame(true);
+			}
+		
 		}
 	}
 }

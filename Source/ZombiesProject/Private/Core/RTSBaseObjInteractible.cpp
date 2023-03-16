@@ -62,3 +62,13 @@ bool ARTSBaseObjInteractible::IsUserController_Implementation()
 	
 }
 
+void ARTSBaseObjInteractible::SetNumberOfObservers_Implementation(int Watcher)
+{
+	NumberOfObservers = Watcher;
+}
+
+int ARTSBaseObjInteractible::GetNumberOfObservers_Implementation()
+{
+	return NumberOfObservers;
+}
+

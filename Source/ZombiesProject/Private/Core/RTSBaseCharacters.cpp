@@ -24,6 +24,9 @@ ARTSBaseCharacters::ARTSBaseCharacters()
 	HealthComponent->OnHealthChanged.AddDynamic(this,&ARTSBaseCharacters::OnHealthChanged);
 
 	FogRevealComponent = CreateDefaultSubobject<URTSFogRevealComponent>(TEXT("FogRevealComponent"));
+
+	PerceptionStimuliSourceComponent = CreateDefaultSubobject<UAIPerceptionStimuliSourceComponent>(TEXT("PerceptionStimuliSourceComponent"));
+	
 	bIsUserController = false;
 }
 

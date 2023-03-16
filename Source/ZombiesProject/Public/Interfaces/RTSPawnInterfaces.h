@@ -25,4 +25,11 @@ public:
 
 	UFUNCTION(BlueprintCallable,BlueprintNativeEvent)
 	bool IsUserController();
+	
+	UFUNCTION(BlueprintCallable,BlueprintNativeEvent)
+	void SetNumberOfObservers(int Watcher);
+	
+	UFUNCTION(BlueprintCallable,BlueprintNativeEvent)
+	int GetNumberOfObservers();
+	
 };

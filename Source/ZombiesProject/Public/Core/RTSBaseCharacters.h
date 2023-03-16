@@ -8,6 +8,7 @@
 #include "GameFramework/Character.h"
 #include "Interfaces/RTSInteractable.h"
 #include "Interfaces/RTSPawnInterfaces.h"
+#include "Perception/AIPerceptionStimuliSourceComponent.h"
 #include "RTSBaseCharacters.generated.h"
 
 UCLASS(Blueprintable)
@@ -33,6 +34,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Component")
 	URTSFogRevealComponent* FogRevealComponent;
+
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Component")
+	UAIPerceptionStimuliSourceComponent* PerceptionStimuliSourceComponent;
 	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -50,6 +54,7 @@ public:
 	
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable,Category="Interaction")
 	void OnDeselect();
+	
 	virtual void OnDeselect_Implementation();
 
 	virtual bool IsUserController_Implementation() override;
