@@ -3,6 +3,7 @@
 
 #include "ZombiesContent/RTSZombieCharacter.h"
 
+#include "Perception/AIPerceptionComponent.h"
 #include "ZombiesContent/RTSZombieController.h"
 
 // Sets default values
@@ -13,6 +14,8 @@ ARTSZombieCharacter::ARTSZombieCharacter()
 
 	AIControllerClass = ARTSZombieController::StaticClass();
 
+	RTSPerceptionComponent = CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("RTSPerceptionComponent"));
+	
 	bIsUserController = false;
 }
 
@@ -20,6 +23,7 @@ ARTSZombieCharacter::ARTSZombieCharacter()
 void ARTSZombieCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
 	
 }
 

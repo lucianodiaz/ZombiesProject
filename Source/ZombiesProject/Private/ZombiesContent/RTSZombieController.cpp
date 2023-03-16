@@ -7,7 +7,7 @@
 
 ARTSZombieController::ARTSZombieController()
 {
-	RTSPerceptionComponent = CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("RTSPerceptionComponent"));
+	
 }
 
 void ARTSZombieController::BeginPlay()

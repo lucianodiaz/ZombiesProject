@@ -7,6 +7,7 @@
 #include "Interfaces/RTSPawnInterfaces.h"
 #include "RTSZombieCharacter.generated.h"
 
+class UAIPerceptionComponent;
 UCLASS()
 class ZOMBIESPROJECT_API ARTSZombieCharacter : public ACharacter,public IRTSPawnInterfaces
 {
@@ -26,6 +27,10 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	UPROPERTY(VisibleDefaultsOnly, Category = AI)
+	UAIPerceptionComponent* RTSPerceptionComponent;
+	
 
 	virtual bool IsUserController_Implementation() override;
 	

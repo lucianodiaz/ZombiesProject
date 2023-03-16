@@ -22,7 +22,4 @@ public:
 
 	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="AI")
 	UBehaviorTree* BTAsset;
-
-	UPROPERTY(VisibleDefaultsOnly, Category = AI)
-	UAIPerceptionComponent* RTSPerceptionComponent;
 };

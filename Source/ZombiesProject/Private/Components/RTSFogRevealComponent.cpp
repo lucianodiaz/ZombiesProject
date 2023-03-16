@@ -21,7 +21,7 @@ URTSFogRevealComponent::URTSFogRevealComponent()
 	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComponent"));
 	// SphereComponent->SetupAttachment(GetOwner()->GetRootComponent());
 	SphereComponent->SetSphereRadius(Radius);
-	SphereComponent->SetHiddenInGame(false);
+	// SphereComponent->SetHiddenInGame(false);
 	// ...
 }
 
