@@ -39,6 +39,7 @@ void ARTSPlayerController::UISelection_Implementation(AActor* Actor)
 			Interface->Execute_OnSelect(ActorSelected);
 			UE_LOG(LogTemp,Display,TEXT("The Actor's name is %s"),*ActorSelected->GetName());
 			UKismetSystemLibrary::PrintString(GetWorld(),ActorSelected->GetName());
+			PlayerCam->SetActorLocation(FVector(ActorSelected->GetActorLocation().X,ActorSelected->GetActorLocation().Y,PlayerCam->GetActorLocation().Z));
 		}
 		else
 		{
@@ -81,6 +82,8 @@ void ARTSPlayerController::Selection()
 				Interface->Execute_OnSelect(ActorSelected);
 				UE_LOG(LogTemp,Display,TEXT("The Actor's name is %s"),*ActorSelected->GetName());
 				UKismetSystemLibrary::PrintString(GetWorld(),ActorSelected->GetName());
+
+				PlayerCam->SetActorLocation(FVector(ActorSelected->GetActorLocation().X,ActorSelected->GetActorLocation().Y,PlayerCam->GetActorLocation().Z));
 			}
 			else
 			{
@@ -112,7 +115,6 @@ void ARTSPlayerController::Action()
 			{
 				TargetLocation = HitResult.Location;
 				Interface->Execute_OnAction(ActorSelected);
-				
 				UKismetSystemLibrary::PrintString(GetWorld(),"Action");
 			}
 		}

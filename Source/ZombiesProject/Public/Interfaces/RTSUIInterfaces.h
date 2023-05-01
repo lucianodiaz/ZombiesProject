@@ -32,5 +32,6 @@ public:
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable,Category="UI")
 	void SetActor(AActor* Owner);
 
-	
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable,Category="UI")
+	void OnAction();
 };
